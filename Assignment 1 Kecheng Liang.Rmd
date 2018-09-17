@@ -1,0 +1,30 @@
+---
+title: "Assignment 1"
+author: "Kecheng Liang"
+date: "Septmenber 17,2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+k <- 0:8
+probmis <- ppois(q=k,lambda = 2, lower.tail = FALSE)
+probmis
+```
+```{r}
+library(knitr)
+table=data.frame(matrix(ncol = 9,nrow = 50))
+colnames(table) <- c("misprint0","misprint1","misprint2","misprint3","misprint4","misprint5","misprint6","misprint7","misprint8")
+for (pgs in 1:50) {
+  table[pgs, ]=pbinom(pgs, 50, prob = probmis, lower.tail = FALSE)
+}
+kable(table)
+```
+```{r}
+knitr::include_graphics("bookkkkkk.png")
+
+
+```
